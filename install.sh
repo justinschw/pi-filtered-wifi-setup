@@ -8,10 +8,9 @@ groupadd docker
 gpasswd -a pi docker
 
 # Install wifi requirements
-apt install hostapd
+apt install -y hostapd dnsmasq ipcalc
 systemctl unmask hostapd
 systemctl enable hostapd
-apt install dnsmasq
 DEBIAN_FRONTEND=noninteractive apt install -y netfilter-persistent iptables-persistent
 
 # Use predictable interface names
