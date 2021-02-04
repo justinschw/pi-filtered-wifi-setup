@@ -16,5 +16,6 @@ DEBIAN_FRONTEND=noninteractive apt install -y netfilter-persistent iptables-pers
 
 # Use predictable interface names
 echo "$(head -n1 /boot/cmdline.txt) net.ifnames=0" >> /boot/cmdline.txt
+echo "guardian-angel" > /etc/hostname
 
 reboot
