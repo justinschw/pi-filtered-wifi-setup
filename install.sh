@@ -14,3 +14,7 @@ systemctl enable hostapd
 apt install dnsmasq
 DEBIAN_FRONTEND=noninteractive apt install -y netfilter-persistent iptables-persistent
 
+# Use predictable interface names
+echo "$(head -n1 /boot/cmdline.txt) net.ifnames=0" >> /boot/cmdline.txt
+
+reboot
