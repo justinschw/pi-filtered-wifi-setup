@@ -69,8 +69,8 @@ if [ ! -f $iptables_save ]; then
 fi
 iptables-restore $iptables_save
 iptables -t nat -A POSTROUTING -o $wan -j MASQUERADE
-iptables -A FORWARD -i eth0 -o wlan0 -m state --state RELATED,ESTABLISHED -j ACCEPT
-iptables -A FORWARD -i wlan0 -o eth0 -j ACCEPT
+iptables -A FORWARD -i $wan -o $wifi -m state --state RELATED,ESTABLISHED -j ACCEPT
+iptables -A FORWARD -i $wifi -o $wan -j ACCEPT
 netfilter-persistent save
 
 # Configure DHCP/DNS

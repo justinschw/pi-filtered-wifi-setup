@@ -1,11 +1,9 @@
 #!/bin/bash
 
-# Install docker
-curl -fsSL get.docker.com -o get-docker.sh && sh get-docker.sh
-ip link add name docker0 type bridge
-ip addr add dev docker0 172.17.0.1/16
-groupadd docker
-gpasswd -a pi docker
+if [ "$EUID" -ne 0 ]
+then echo "Please run this tool as an administrator."
+     exit
+fi
 
 # Install wifi requirements
 apt install -y hostapd dnsmasq ipcalc
